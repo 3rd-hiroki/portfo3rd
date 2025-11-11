@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>河野浩喜 | ポートフォリオ</title>
   <meta name="description" content="INIADの学生・AI×セキュリティに関心。実装と政策をつなぐポートフォリオ。" />
+  <meta property="og:title" content="河野浩喜 | ポートフォリオ" />
+  <meta property="og:description" content="INIADの学生・AI×セキュリティに関心。実装と政策をつなぐポートフォリオ。" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%230ea5e9%22/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -26,7 +31,7 @@
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
-      margin:0; font-family: 'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      margin:0; font-family: 'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
       color: var(--text); background: radial-gradient(1200px 600px at 80% -10%, rgba(14,165,233,.18), transparent 60%),
                 radial-gradient(1000px 800px at -10% 20%, rgba(34,211,238,.12), transparent 60%), var(--bg);
       line-height: 1.65; letter-spacing: .02em;
@@ -86,6 +91,7 @@
 
     /* Skills */
     .skills { display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .card, .skill { background: var(--panel); }
     .skill { grid-column: span 6; padding: 18px; }
     .meter { height: 10px; background: color-mix(in srgb, var(--text) 10%, transparent); border-radius: 999px; overflow: hidden; }
     .meter > i { display:block; height:100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
@@ -93,7 +99,7 @@
 
     /* Projects */
     .cards { display:grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
-    .card { grid-column: span 6; overflow:hidden; }
+    .card { grid-column: span 6; overflow:hidden; border: 1px solid color-mix(in srgb, var(--text) 10%, transparent); border-radius: var(--radius); box-shadow: var(--shadow); }
     .card .thumb { aspect-ratio: 16/9; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 14%, transparent), color-mix(in srgb, var(--accent-2) 10%, transparent)); display:grid; place-items:center; }
     .card svg { width: 64px; height: 64px; opacity:.8; }
     .card .body { padding: 18px 18px 22px; }
@@ -124,6 +130,7 @@
   </style>
 </head>
 <body>
+  <!-- Version: 2025-11-11 -->
   <header>
     <div class="nav">
       <div class="brand">
@@ -247,7 +254,7 @@
           <span class="tag">Chrome拡張</span><span class="tag">RAG</span><span class="tag">LLM</span>
           <h3>メルカリ詐欺検知拡張機能</h3>
           <p>商品説明・画像・出品履歴から詐欺リスクをスコア化。<b>キーワード辞書×BERT</b>と<b>レビュー解析</b>で実用的な警告UIを提供。</p>
-          <a href="#" aria-disabled="true">（GitHub リンクを後で追加）</a>
+          <a href="#" aria-disabled="true" tabindex="-1">（GitHub リンクを後で追加）</a>
         </div>
       </article>
 
@@ -261,7 +268,7 @@
           <span class="tag">Unity</span><span class="tag">2D</span>
           <h3>二段勇者（横スクロール）</h3>
           <p>二段ジャンプと自動攻撃で障害物・敵を攻略。<b>自然落下/当たり判定/ゲームオーバー</b>を実装し、スコアと難易度調整に対応。</p>
-          <a href="#" aria-disabled="true">（動画 / itch.io を後で追加）</a>
+          <a href="#" aria-disabled="true" tabindex="-1">（動画 / itch.io を後で追加）</a>
         </div>
       </article>
 
@@ -275,7 +282,7 @@
           <span class="tag">Flask</span><span class="tag">API</span>
           <h3>詐欺構文API（model2.csv対応）</h3>
           <p>メルカリの危険構文をAPI化。<b>文章の危険度評価</b>と<b>根拠スニペット</b>を返し、拡張機能から呼び出し可能に。</p>
-          <a href="#" aria-disabled="true">（API ドキュメントを後で追加）</a>
+          <a href="#" aria-disabled="true" tabindex="-1">（API ドキュメントを後で追加）</a>
         </div>
       </article>
 
@@ -290,7 +297,7 @@
           <span class="tag">Policy</span><span class="tag">ACD</span>
           <h3>能動的サイバー防御の制度設計</h3>
           <p>英国NCSC/米CISA等の比較から、日本の<b>CiSP型情報共有</b>や<b>免責規定</b>を提案。官民連携・人材育成を柱に据えた制度案。</p>
-          <a href="#" aria-disabled="true">（PDF を後で追加）</a>
+          <a href="#" aria-disabled="true" tabindex="-1">（PDF を後で追加）</a>
         </div>
       </article>
     </div>
@@ -321,8 +328,8 @@
     <p>ご連絡は、以下からどうぞ。</p>
     <ul>
       <li>メール：<a href="mailto:your.name@example.com">your.name@example.com</a></li>
-      <li>GitHub：<a href="#" aria-disabled="true">（リンクを追加）</a></li>
-      <li>X（Twitter）：<a href="#" aria-disabled="true">（リンクを追加）</a></li>
+      <li>GitHub：<a href="#" aria-disabled="true" tabindex="-1">（リンクを追加）</a></li>
+      <li>X（Twitter）：<a href="#" aria-disabled="true" tabindex="-1">（リンクを追加）</a></li>
     </ul>
   </section>
 
@@ -338,10 +345,14 @@
     const menuBtn = document.getElementById('menuBtn');
     const menu = document.getElementById('menu');
     menuBtn.addEventListener('click', () => menu.classList.toggle('open'));
+    // Close menu when link clicked on mobile
+    menu.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') menu.classList.remove('open');
+    });
 
     // active link on scroll
     const links = [...document.querySelectorAll('nav a[href^="#"]')];
-    const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if(e.isIntersecting){
@@ -349,14 +360,14 @@
         }
       })
     }, { threshold: .4 });
-    sections.forEach(s => s && obs.observe(s));
+    sections.forEach(s => obs.observe(s));
 
     // reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const ro = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('show'); ro.unobserve(e.target);} }), { threshold:.18 });
     reveals.forEach(r => ro.observe(r));
 
-    // theme toggle (persist)
+    // theme toggle (persist) — default to dark to match CSS
     const switcher = document.getElementById('themeSwitch');
     const saved = localStorage.getItem('theme');
     const setTheme = (mode) => {
@@ -373,10 +384,14 @@
         document.documentElement.style.setProperty('--muted', '#a8b3c7');
         document.documentElement.style.setProperty('--shadow', '0 10px 30px rgba(2,6,23,.4)');
       }
-    }
+    };
     if(saved){
       setTheme(saved);
       switcher.checked = saved === 'dark';
+    } else {
+      // 初期表示はダーク。トグルの状態も合わせる
+      switcher.checked = true;
+      setTheme('dark');
     }
     switcher.addEventListener('change', () => {
       const mode = switcher.checked ? 'dark' : 'light';
