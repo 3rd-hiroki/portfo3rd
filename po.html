@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>河野浩喜 | ポートフォリオ</title>
+  <meta name="description" content="INIADの学生・AI×セキュリティに関心。実装と政策をつなぐポートフォリオ。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0e13;
+      --panel: #121722;
+      --text: #e6eefb;
+      --muted: #a8b3c7;
+      --accent: #0ea5e9; /* 水色: セキュリティ/テック感 */
+      --accent-2: #22d3ee; /* 補助アクセント */
+      --shadow: 0 10px 30px rgba(2, 6, 23, .4);
+      --radius: 16px;
+      --maxw: 1100px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#f7fafc; --panel:#ffffff; --text:#0b1220; --muted:#475569; --shadow:0 10px 30px rgba(2,6,23,.08); }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin:0; font-family: 'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: radial-gradient(1200px 600px at 80% -10%, rgba(14,165,233,.18), transparent 60%),
+                radial-gradient(1000px 800px at -10% 20%, rgba(34,211,238,.12), transparent 60%), var(--bg);
+      line-height: 1.65; letter-spacing: .02em;
+      scroll-behavior: smooth;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(120%) blur(10px);
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+    }
+    .nav { max-width: var(--maxw); margin: 0 auto; display:flex; align-items:center; justify-content:space-between; padding: 14px 20px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+    .brand .logo { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow); position: relative; }
+    .brand .logo::after{ content:""; position:absolute; inset:6px; border-radius:8px; background: color-mix(in srgb, white 35%, transparent); mix-blend-mode: overlay; }
+
+    nav ul { display:flex; gap: 18px; list-style:none; margin:0; padding:0; }
+    nav a { padding: 8px 12px; border-radius: 999px; font-weight: 500; }
+    nav a.active, nav a:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); text-decoration: none; }
+
+    .menu-btn { display:none; border:1px solid color-mix(in srgb, var(--text) 14%, transparent); background:transparent; color:var(--text); padding:8px 12px; border-radius:10px; }
+    @media (max-width: 860px){
+      nav ul { display:none; position:absolute; right:20px; top:64px; flex-direction:column; width:min(420px, 92vw); background:var(--panel); padding:12px; border-radius:16px; box-shadow: var(--shadow); border:1px solid color-mix(in srgb, var(--text) 10%, transparent); }
+      nav ul.open { display:flex; }
+      .menu-btn { display:inline-flex; }
+    }
+
+    /* Sections */
+    section { max-width: var(--maxw); margin: 0 auto; padding: 80px 20px; }
+    .panel { background: var(--panel); border: 1px solid color-mix(in srgb, var(--text) 10%, transparent); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .kicker { color: var(--muted); font-size:.9rem; text-transform: uppercase; letter-spacing: .2em; }
+    .h1 { font-family: 'Poppins', system-ui, sans-serif; font-weight: 700; font-size: clamp(28px, 5vw, 48px); line-height: 1.2; margin: 10px 0 18px; }
+    .lead { color: var(--muted); font-size: clamp(15px, 2.2vw, 18px); }
+
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap: 26px; align-items: center; }
+    .hero-card { padding: 28px; }
+    .hero-cta { display:flex; gap:12px; margin-top:22px; flex-wrap: wrap; }
+    .btn { display:inline-flex; align-items:center; gap:10px; border-radius: 12px; padding: 12px 16px; border:1px solid color-mix(in srgb, var(--text) 14%, transparent); background: linear-gradient(180deg, color-mix(in srgb, var(--panel) 80%, transparent), color-mix(in srgb, black 12%, transparent)); color:var(--text); font-weight:600; box-shadow: var(--shadow); }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #06202d; border: none; }
+    .btn:hover { transform: translateY(-1px); text-decoration:none; }
+
+    .hero-visual { position: relative; overflow: hidden; border-radius: var(--radius); min-height: 300px; display:grid; place-items:center; }
+    .grid-bg { position:absolute; inset:0; background:
+        linear-gradient(transparent 49%, color-mix(in srgb, var(--accent) 28%, transparent) 50%) 0 0/ 24px 24px,
+        linear-gradient(90deg, transparent 49%, color-mix(in srgb, var(--accent) 28%, transparent) 50%) 0 0/ 24px 24px; opacity:.25; }
+    .pulse { position: absolute; width: 280px; height: 280px; border-radius: 999px; background: radial-gradient(circle at 30% 30%, var(--accent-2), transparent 60%); filter: blur(28px); opacity:.5; animation: float 6s ease-in-out infinite alternate; }
+    @keyframes float { from { transform: translateY(-10px);} to { transform: translateY(10px);} }
+
+    /* About */
+    .about { display:grid; gap:20px; grid-template-columns: 1fr 1fr; }
+    .about .panel { padding: 24px; }
+    @media (max-width: 920px){ .hero { grid-template-columns:1fr; } .about{ grid-template-columns:1fr; }}
+
+    /* Skills */
+    .skills { display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .skill { grid-column: span 6; padding: 18px; }
+    .meter { height: 10px; background: color-mix(in srgb, var(--text) 10%, transparent); border-radius: 999px; overflow: hidden; }
+    .meter > i { display:block; height:100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+    @media (max-width: 720px){ .skill{ grid-column: span 12; } }
+
+    /* Projects */
+    .cards { display:grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .card { grid-column: span 6; overflow:hidden; }
+    .card .thumb { aspect-ratio: 16/9; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 14%, transparent), color-mix(in srgb, var(--accent-2) 10%, transparent)); display:grid; place-items:center; }
+    .card svg { width: 64px; height: 64px; opacity:.8; }
+    .card .body { padding: 18px 18px 22px; }
+    .tag { display:inline-flex; align-items:center; font-size: .8rem; padding: 4px 10px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--text) 14%, transparent); color: var(--muted); margin-right:8px; margin-bottom:6px; }
+    .card h3 { margin: 6px 0 8px; font-size: 1.15rem; }
+    .card p { color: var(--muted); margin:0 0 10px; }
+    @media (max-width: 920px){ .card{ grid-column: span 12; } }
+
+    /* Research */
+    .timeline { position: relative; margin-left: 6px; padding-left: 18px; }
+    .timeline::before { content:""; position:absolute; left:0; top:0; bottom:0; width:2px; background: color-mix(in srgb, var(--accent) 30%, transparent); }
+    .time-item { margin: 0 0 18px; }
+    .time-item b { display:block; margin-bottom: 6px; }
+
+    /* Footer */
+    footer { padding: 40px 20px; color:var(--muted); text-align:center; }
+
+    /* Subtle reveal */
+    .reveal { opacity:0; transform: translateY(8px); transition: .6s ease; }
+    .reveal.show { opacity:1; transform: none; }
+
+    /* Theme toggle */
+    .toggle { border:1px solid color-mix(in srgb, var(--text) 14%, transparent); background: var(--panel); border-radius: 999px; padding: 6px 10px; display:inline-flex; align-items:center; gap:8px; }
+    .toggle input { appearance:none; width:42px; height:24px; background: color-mix(in srgb, var(--text) 12%, transparent); border-radius:999px; position: relative; outline:none; cursor:pointer; }
+    .toggle input::after { content:""; position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:999px; background:#fff; transition:.25s; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+    .toggle input:checked { background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+    .toggle input:checked::after { left: 21px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Hiroki Kono</span>
+      </div>
+      <nav>
+        <button class="menu-btn" aria-label="メニュー" id="menuBtn">メニュー</button>
+        <ul id="menu">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Works</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <label class="toggle" title="ダーク/ライト">
+              <span aria-hidden="true">🌓</span>
+              <input id="themeSwitch" type="checkbox" aria-label="テーマ切替">
+            </label>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="panel hero-card reveal">
+      <div class="kicker">INIAD / ICT × Security × AI</div>
+      <h1 class="h1">実装と政策で、<br>社会を下支えするエンジニアへ。</h1>
+      <p class="lead">Python・Flask・Unity・Transformersを活用し、<b>生成AI×詐欺対策</b>や<b>能動的サイバー防御（ACD）</b>をテーマに研究・開発。現場で役立つツールと、制度設計の両輪で価値を届けます。</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#projects">プロジェクトを見る</a>
+        <a class="btn" href="#contact">連絡する</a>
+      </div>
+    </div>
+    <div class="panel hero-visual reveal" aria-hidden="true">
+      <div class="grid-bg"></div>
+      <div class="pulse"></div>
+      <svg width="220" height="220" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.9">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="var(--accent)"/>
+            <stop offset="1" stop-color="var(--accent-2)"/>
+          </linearGradient>
+        </defs>
+        <path d="M20 160 L100 20 L180 160 Z" stroke="url(#g)" stroke-width="3" fill="none"/>
+        <circle cx="100" cy="100" r="38" stroke="url(#g)" stroke-width="3" fill="none"/>
+        <path d="M80 100 h40" stroke="url(#g)" stroke-width="3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="panel reveal">
+      <h2>自己紹介</h2>
+      <p>東洋大学 INIAD 情報連携学部。<b>生成AIとセキュリティ</b>領域を横断し、<b>メルカリ拡張による詐欺検知</b>（RAG/キーワード辞書/画像リスク可視化）や、<b>Unity横スクロールゲーム「二段勇者」</b>などを制作。卒論は<b>能動的サイバー防御法（ACD）</b>の制度設計と倫理を中心に研究しています。</p>
+      <ul>
+        <li>関心：官民連携の情報共有（CiSP型）、AIガバナンス、実装×政策の橋渡し</li>
+        <li>得意：Python / Flask / HTML / CSS / JavaScript / Unity / Transformers</li>
+        <li>趣味：漫画・ゲーム・散歩</li>
+      </ul>
+    </div>
+    <div class="panel reveal">
+      <h2>価値観 / モットー</h2>
+      <p><b>「縁の下の力持ち」</b>として、現場の可視化・自動化・安全性向上を地道に積み上げる。ユーザー体験と安全性のトレードオフを丁寧に解き、<b>質にこだわるものづくり</b>を続けます。</p>
+      <p>将来は<b>通信インフラ・社内SE</b>領域で、センサー/監視とクラウドを繋ぐ基盤づくりに挑戦します。</p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="panel reveal">
+    <h2>スキル</h2>
+    <div class="skills">
+      <div class="skill">
+        <b>Python / Flask / FastAPI</b>
+        <div class="meter" aria-label="Python skill"><i style="width:88%"></i></div>
+        <small class="muted">データ処理、API、RAGパイプライン</small>
+      </div>
+      <div class="skill">
+        <b>JavaScript / HTML / CSS</b>
+        <div class="meter"><i style="width:82%"></i></div>
+        <small>UI/UX、アクセシビリティ、レスポンシブ</small>
+      </div>
+      <div class="skill">
+        <b>Transformers / LLM</b>
+        <div class="meter"><i style="width:78%"></i></div>
+        <small>テキスト分類、プロンプト設計、RAG</small>
+      </div>
+      <div class="skill">
+        <b>Unity / C#</b>
+        <div class="meter"><i style="width:70%"></i></div>
+        <small>2Dアクション、物理、入力制御</small>
+      </div>
+      <div class="skill">
+        <b>Security / Policy</b>
+        <div class="meter"><i style="width:74%"></i></div>
+        <small>ACD、CiSP型情報共有、AIガバナンス</small>
+      </div>
+      <div class="skill">
+        <b>Git / CI</b>
+        <div class="meter"><i style="width:72%"></i></div>
+        <small>GitHub Actions、テスト自動化</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="panel reveal">
+    <h2>作品 / プロジェクト</h2>
+    <div class="cards">
+      <article class="card panel">
+        <div class="thumb">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="body">
+          <span class="tag">Chrome拡張</span><span class="tag">RAG</span><span class="tag">LLM</span>
+          <h3>メルカリ詐欺検知拡張機能</h3>
+          <p>商品説明・画像・出品履歴から詐欺リスクをスコア化。<b>キーワード辞書×BERT</b>と<b>レビュー解析</b>で実用的な警告UIを提供。</p>
+          <a href="#" aria-disabled="true">（GitHub リンクを後で追加）</a>
+        </div>
+      </article>
+
+      <article class="card panel">
+        <div class="thumb">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 11h18M12 2v20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="body">
+          <span class="tag">Unity</span><span class="tag">2D</span>
+          <h3>二段勇者（横スクロール）</h3>
+          <p>二段ジャンプと自動攻撃で障害物・敵を攻略。<b>自然落下/当たり判定/ゲームオーバー</b>を実装し、スコアと難易度調整に対応。</p>
+          <a href="#" aria-disabled="true">（動画 / itch.io を後で追加）</a>
+        </div>
+      </article>
+
+      <article class="card panel">
+        <div class="thumb">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="body">
+          <span class="tag">Flask</span><span class="tag">API</span>
+          <h3>詐欺構文API（model2.csv対応）</h3>
+          <p>メルカリの危険構文をAPI化。<b>文章の危険度評価</b>と<b>根拠スニペット</b>を返し、拡張機能から呼び出し可能に。</p>
+          <a href="#" aria-disabled="true">（API ドキュメントを後で追加）</a>
+        </div>
+      </article>
+
+      <article class="card panel">
+        <div class="thumb">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 12h8" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="body">
+          <span class="tag">Policy</span><span class="tag">ACD</span>
+          <h3>能動的サイバー防御の制度設計</h3>
+          <p>英国NCSC/米CISA等の比較から、日本の<b>CiSP型情報共有</b>や<b>免責規定</b>を提案。官民連携・人材育成を柱に据えた制度案。</p>
+          <a href="#" aria-disabled="true">（PDF を後で追加）</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research" class="panel reveal">
+    <h2>研究 / 執筆</h2>
+    <div class="timeline">
+      <div class="time-item">
+        <b>2025-10 卒論準備：能動的サイバー防御（ACD）</b>
+        <span class="muted">法的課題（通信の秘密・越権リスク）と、官民情報共有の制度設計を整理。</span>
+      </div>
+      <div class="time-item">
+        <b>2025-08 メルカリ詐欺検知の精度改善</b>
+        <span class="muted">RAG辞書拡充、画像特徴の重み付け、UIの色分け再設計。</span>
+      </div>
+      <div class="time-item">
+        <b>2024-12 生成AI×リスク検知のPoC</b>
+        <span class="muted">BERT導入と危険構文CSV照合のハイブリッド設計。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="panel reveal">
+    <h2>Contact</h2>
+    <p>ご連絡は、以下からどうぞ。</p>
+    <ul>
+      <li>メール：<a href="mailto:your.name@example.com">your.name@example.com</a></li>
+      <li>GitHub：<a href="#" aria-disabled="true">（リンクを追加）</a></li>
+      <li>X（Twitter）：<a href="#" aria-disabled="true">（リンクを追加）</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    © <span id="y"></span> Hiroki Kono. All rights reserved.
+  </footer>
+
+  <script>
+    // footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // menu
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => menu.classList.toggle('open'));
+
+    // active link on scroll
+    const links = [...document.querySelectorAll('nav a[href^="#"]')];
+    const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      })
+    }, { threshold: .4 });
+    sections.forEach(s => s && obs.observe(s));
+
+    // reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const ro = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('show'); ro.unobserve(e.target);} }), { threshold:.18 });
+    reveals.forEach(r => ro.observe(r));
+
+    // theme toggle (persist)
+    const switcher = document.getElementById('themeSwitch');
+    const saved = localStorage.getItem('theme');
+    const setTheme = (mode) => {
+      if(mode === 'light'){
+        document.documentElement.style.setProperty('--bg', '#f7fafc');
+        document.documentElement.style.setProperty('--panel', '#ffffff');
+        document.documentElement.style.setProperty('--text', '#0b1220');
+        document.documentElement.style.setProperty('--muted', '#475569');
+        document.documentElement.style.setProperty('--shadow', '0 10px 30px rgba(2,6,23,.08)');
+      } else {
+        document.documentElement.style.setProperty('--bg', '#0b0e13');
+        document.documentElement.style.setProperty('--panel', '#121722');
+        document.documentElement.style.setProperty('--text', '#e6eefb');
+        document.documentElement.style.setProperty('--muted', '#a8b3c7');
+        document.documentElement.style.setProperty('--shadow', '0 10px 30px rgba(2,6,23,.4)');
+      }
+    }
+    if(saved){
+      setTheme(saved);
+      switcher.checked = saved === 'dark';
+    }
+    switcher.addEventListener('change', () => {
+      const mode = switcher.checked ? 'dark' : 'light';
+      setTheme(mode);
+      localStorage.setItem('theme', mode);
+    });
+  </script>
+</body>
+</html>
